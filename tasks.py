@@ -26,7 +26,7 @@ def task3(a: [float, int], b: [float, int]) -> [float, int]:
     Вернуть длину гипотенузы.
     """
     if a > 0 and b > 0:
-        return pow((pow(a, 2) + pow(b, 2)), 1/2)
+        return pow((a ** 2 + b ** 2), 1 / 2)
     else:
         raise TaskException
 
@@ -77,10 +77,7 @@ def task9(string: str) -> str:
     с 3 восклицательными знаками в конце ('!!!') и вывести на экран.
     Если меньше 10, то вывести на экран второй символ строки
     """
-    if len(string) > 10:
-        return string + "!!!"
-    else:
-        return string[1]
+    return string + "!!!" if len(string) > 10 else string[1]
 
 
 def task10(string: str) -> tuple[str, [None, str]]:
@@ -102,10 +99,7 @@ def task11(string: str) -> bool:
     Напишите функцию которая проверяет является ли строка палиндромом.
     Палиндром — это слово или фраза, которые одинаково читаются слева направо и справа налево.
     """
-    if string == string[::-1]:
-        return True
-    else:
-        return False
+    return True if string == string[::-1] else False
 
 
 def task12(string: str, symbol: str) -> int:
@@ -115,7 +109,7 @@ def task12(string: str, symbol: str) -> int:
     res = 0
     for x in string:
         if x == symbol:
-            res = res + 1
+            res += 1
     return res
 
 
@@ -123,10 +117,7 @@ def task13(number: int) -> bool:
     """
     Дано число. Если это число делится на 1000 без остатка, то верните True иначе False
     """
-    if number % 1000 == 0:
-        return True
-    else:
-        return False
+    return True if number % 1000 == 0 else False
 
 
 def task14(guests_count: int) -> str:
@@ -139,7 +130,7 @@ def task14(guests_count: int) -> str:
         return "ресторан"
     elif 20 <= guests_count <= 50:
         return "кафе"
-    elif guests_count < 20:
+    elif 0 < guests_count < 20:
         return "дом"
     else:
         raise TaskException
@@ -247,17 +238,18 @@ def perfect_square(square: str) -> bool:
      - Правильные квадраты могут содержать только '.' и необязательно '\n' (перевод строки).
      - Идеальные квадраты должны иметь одинаковую ширину и высоту.
     """
-    lines = 0
+    # lines = 0
+    # for i in square:
+    #     lines += 1
+    #     if len(square) == lines and i == '.':
+    #         return True
+    #     else:
+    #         return False
     for i in square:
-        lines += 1
-        if len(square) == lines:
+        if len(square) == square.count("\n") + 1 and i == '.':
             return True
         else:
             return False
-# if len(square) == square.count("\n") - 1 or len(square) == 1:
-#     return True
-# else:
-#     return False
 
 
 def task_with_square_brackets(string_input: str) -> str:
